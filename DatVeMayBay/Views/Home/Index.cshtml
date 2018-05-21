@@ -1,0 +1,43 @@
+﻿@model DatVeMayBay.EntityViews.SearchEVTicket
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="jumbotron jumbotron-header">
+    <div class="container form-book">
+        <div class="row">
+            <div class="col-md-6 offset-md-4" id="form-search">
+                @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+                {                   
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row text-center">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>Nơi khởi hành</label>
+                                @Html.DropDownListFor(model => model.MA_SAN_BAY_DI, new SelectList(ViewBag.maybay, "MA_SANBAY", "TEN_SANBAY"), "--Chọn Sân Bay Đi--", new { @class = "diadiem form-control", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>Nơi Đến</label>
+                                @Html.DropDownListFor(model => model.MA_SAN_BAY_DEN, new SelectList(ViewBag.maybay, "MA_SANBAY", "TEN_SANBAY"), "--Chọn Sân Bay Đi--", new { @class = "diadiem form-control", @required = "required" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Ngày Đi</label>
+                                @Html.TextBoxFor(model => model.NGAY_DI, null, new { @class = "form-control", @data_toggle = "datepicker", @required = "required" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-center" style="padding-top:31px">
+                            <button class="btn btn-info" type="submit">Tìm</button>
+                        </div>
+                    </div>                   
+                }
+            </div>
+        </div>
+    </div>
+</section>

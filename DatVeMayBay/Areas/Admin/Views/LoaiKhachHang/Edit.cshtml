@@ -1,0 +1,51 @@
+﻿@model ModelPlain.EF.LOAIKHACH
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content pt-2">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Thêm Loại Ghế</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    @using (Html.BeginForm())
+                    {
+                         @Html.AntiForgeryToken()
+                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                         @Html.HiddenFor(model => model.MA_LOAIKHACH)
+                        <div class="card-body">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label>Tên Loại Khách Hàng</label>
+                                @Html.EditorFor(model => model.TEN_LOAIKHACH, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TEN_LOAIKHACH, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Phần tram giá</label>
+                                @Html.EditorFor(model => model.PHANTRAMGIA_LOAIKHACH, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PHANTRAMGIA_LOAIKHACH, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.TINHTRANG_LOAIKHACH)
+                                @Html.ValidationMessageFor(model => model.TINHTRANG_LOAIKHACH, "", new { @class = "text-danger" })
+                                <label class="form-check-label">Tình trạng</label>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Thêm</button>
+                            @Html.ActionLink("Trở về", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

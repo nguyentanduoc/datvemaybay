@@ -1,0 +1,16 @@
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\ModelPlain.dll.config
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\ModelPlain.dll
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\ModelPlain.pdb
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\EntityFramework.dll
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\PagedList.dll
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\PagedList.Mvc.dll
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\EntityFramework.xml
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\PagedList.xml
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\bin\Debug\PagedList.Mvc.xml
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\obj\Debug\ModelPlain.csproj.CoreCompileInputs.cache
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\obj\Debug\ModelPlain.csproj.CopyComplete
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\obj\Debug\ModelPlain.dll
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\obj\Debug\ModelPlain.pdb
+C:\Users\NTDSIVAL\source\repos\DatVeMayBay\ModelPlain\obj\Debug\ModelPlain.csprojAssemblyReference.cache

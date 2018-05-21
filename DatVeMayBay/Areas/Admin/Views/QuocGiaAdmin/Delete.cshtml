@@ -1,0 +1,40 @@
+﻿@model ModelPlain.EF.QUOCGIA
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-6 pt-2">
+    <!-- general form elements -->
+    <div class="card card-danger">
+        <div class="card-header">
+            <h3 class="card-title">Delete</h3>
+        </div>
+        
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <label>Tên Quốc Gia</label>
+                </div>
+                <div class="col-9">
+                    @Html.DisplayFor(model => model.TEN_QUOCGIA)
+                </div>
+            </div>         
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+            @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay Lại", "Index")
+        </div>
+}
+        </div>
+
+    </div>
+</div>
+   

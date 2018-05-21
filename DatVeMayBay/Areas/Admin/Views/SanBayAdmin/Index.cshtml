@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ModelPlain.EF.SANBAY>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}            <!-- /.card -->
+
+<div class="row pt-2">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header row">
+                <div class="col-md-4">
+                    <a href="@Url.Action("Create", "SanBayAdmin")" class=" btn btn-success">                       
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </a>                        
+                </div>              
+                <h3 class="col-md-4 card-title text-center">Danh Sách Sân Bay</h3>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 200px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                    <tr>
+                    <tr>
+                        <th>
+                            Tên Sân Bay
+                        </th>
+                        <th>
+                            Tình Trạng
+                        </th>
+                        <th>
+                            Địa Chỉ
+                        </th>
+                        <th>
+                            Quốc Gia
+                        </th>
+                        <th>Tiện ích</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TEN_SANBAY)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TINHTRANG_SANBAY)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DIACHI_SANBAY)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.QUOCGIA.TEN_QUOCGIA)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "SanBayAdmin", new { id = item.MA_SANBAY })" , class="pr-3">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                                <a href="@Url.Action("Delete", "SanBayAdmin", new { id = item.MA_SANBAY })">
+                                    <i class="fa fa-times" aria-hidden="true" style="color:#d63031"></i>
+                                </a>                               
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿@model ModelPlain.EF.LOAIKHACH
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var loaikhachhang = (List<ModelPlain.EF.LOAIKHACH>)ViewBag.loaikhachhang;
+}
+<div class="row pt-2">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Thêm Loại Khác</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            @using (Html.BeginForm("Create", "LoaiKhachHang", FormMethod.Post, new { @role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Tên Loại Khách:</label>
+                    @Html.TextBoxFor(model => model.TEN_LOAIKHACH, new { @class = "form-control", @placeholder = "Nhập Tên Loại Khác" })
+                    @Html.ValidationMessageFor(model => model.TEN_LOAIKHACH, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label>Phần Trăm:</label>
+                    @Html.TextBoxFor(model => model.PHANTRAMGIA_LOAIKHACH, new { @class = "form-control", @placeholder = "Phần Trăm" })
+                    @Html.ValidationMessageFor(model => model.PHANTRAMGIA_LOAIKHACH, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-check">
+                    @Html.CheckBoxFor(model => model.TINHTRANG_LOAIKHACH, new { @class = "form-check-input", })
+                    Tình Trạng Loại Khách
+                    @Html.ValidationMessageFor(model => model.TINHTRANG_LOAIKHACH, "", new { @class = "text-danger" })
+                </div>
+            </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <input type="submit" value="Thêm" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Danh sách Loại Khách</h3>
+
+                <div class="card-tools">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <table class="table">
+                    <tr>
+                        <th>Tên Loại Khách Hàng</th>
+                        <th>Phần trăm</th>
+                        <th>Tình trạng</th>
+                        <th>Mở Rộng</th>
+                    </tr>
+                    @foreach (var item in loaikhachhang)
+                    {
+                    <tr>
+
+                        <td>@Html.DisplayFor(modelItem => item.TEN_LOAIKHACH)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PHANTRAMGIA_LOAIKHACH)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TINHTRANG_LOAIKHACH)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.MA_LOAIKHACH }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MA_LOAIKHACH })
+                        </td>
+                    </tr>
+                    }
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>

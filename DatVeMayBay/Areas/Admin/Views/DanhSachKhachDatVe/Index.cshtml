@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ModelPlain.EF.CHITIETDATVE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content pt-2">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-center">Danh sách khách đặt vé</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>                                
+                                <th>Tên Khách Hàng</th>
+                                <th>Ngày Giờ Đặt</th>
+                                <th>Mã Vé</th>
+                                <th>Thông tin Khách Hàng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NGAYDAT)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.KHACHHANG.TEN_KHACHHANG)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VE.MAVE)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Thông tin khách hàng", "TTK", new {  id=item.MA_KHACHHANG })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            </div>
+        </div>
+    </section>
+        

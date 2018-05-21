@@ -1,0 +1,43 @@
+﻿@model ModelPlain.EF.KHACHHANG
+
+@{
+    ViewBag.Title = "TTK";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-6 pt-2 offset-3">
+    <!-- Horizontal Form -->
+    <div class="card card-info">
+        <div class="card-header">
+            <h3 class="card-title">Thông Tin khách Hàng</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 offset-2">
+                        <label>Tên Khách Hàng:</label>
+                        <label>Số điện thoại</label>
+                        <label>Email Khách Hàng</label>
+                        <label>Giới tính</label>
+                        <label>Tình trạng</label>
+                    </div>
+                    <div class="col-md-4">
+                        <div> @Html.DisplayFor(model => model.TEN_KHACHHANG)</div>
+                        <div> @Html.DisplayFor(model => model.SDT_KHACHHANG)</div>
+                        <div> @Html.DisplayFor(model => model.EMAIL_KHACHHANG)</div>
+                        <div>
+                            @Html.RadioButtonFor(model => model.GIOITINH_KHACHHANG, true) Nam
+                            @Html.RadioButtonFor(model => model.GIOITINH_KHACHHANG, false) Nữ
+                        </div>
+                        <div>@Html.CheckBoxFor(model => model.TINHTRANG_KHACHHANG)</div>
+                    </div>
+                </div>               
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                @Html.ActionLink("Quay Về", "Index")
+            </div>
+            <!-- /.card-footer -->
+    </div>
+  </div>

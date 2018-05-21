@@ -1,0 +1,53 @@
+﻿@model ModelPlain.EF.GHE
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content pt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title text-center">Xoá chuyến bay</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-md-4">Số hiệu ghế:</label>
+                        <div class="col-md-4">
+                            @Html.DisplayFor(model => model.SOHIEU_GHE)
+                        </div>                       
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4">Loại ghế:</label>
+                        <div class="col-md-4">
+                            @Html.DisplayFor(model => model.LOAIGHE.TEN_LOAIGHE)
+                        </div>                        
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4">Số hiệu máy bay</label>
+                        <div class="col-md-4">
+                            @Html.DisplayFor(model => model.MAYBAY.SOHIEU_MAYBAY)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4">Tình trạng</label>
+                        <div class="col-md-4">
+                            @Html.DisplayFor(model => model.TINHTRANG_GHE)
+                        </div>                       
+                    </div>                   
+                </div>
+                <div class="card-footer">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Xoá" class="btn btn-danger" /> |
+                            @Html.ActionLink("Về danh sách", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

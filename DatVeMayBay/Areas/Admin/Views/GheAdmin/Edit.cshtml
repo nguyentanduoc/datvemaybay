@@ -1,0 +1,64 @@
+﻿@model ModelPlain.EF.GHE
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content pt-2">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Sửa Loại Ghế</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.MA_GHE)
+                    <div class="card-body">
+                        <div class="form-group">
+                           <label>Loại Ghế</label>                           
+                            @Html.DropDownList("MA_LOAIGHE", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MA_LOAIGHE, "", new { @class = "text-danger" })                           
+                        </div>
+
+                        <div class="form-group">                           
+                           <label>Số Hiệu Máy Bay</label>
+                            @Html.DropDownList("MA_MAYBAY", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MA_MAYBAY, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                          <label>Số Hiệu Ghế</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SOHIEU_GHE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SOHIEU_GHE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">                            
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.TINHTRANG_GHE)
+                                    @Html.ValidationMessageFor(model => model.TINHTRANG_GHE, "", new { @class = "text-danger" })
+                                Tình Trạng Ghế
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Cập Nhật</button>
+                        @Html.ActionLink("Trở về", "Index")
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

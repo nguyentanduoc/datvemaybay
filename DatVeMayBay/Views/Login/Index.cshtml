@@ -1,0 +1,33 @@
+﻿@model DatVeMayBay.EntityViews.LoginEV
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-signin" }))
+{
+    @Html.AntiForgeryToken()
+
+    <span id="reauth-email" class="reauth-email"></span>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.UserName), @autofocus = "autoforcus" ,@type = "email"})
+    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+    @Html.PasswordFor(model => model.PassWord, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.PassWord) })
+    @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+    <div id="remember" class="checkbox">
+        <label>
+            @Html.CheckBoxFor(model => model.ReMemberMe)
+            Remember me
+            @Html.ValidationMessageFor(model => model.ReMemberMe, "", new { @class = "text-danger" })
+        </label>
+    </div>
+    <button class="btn btn-outline-primary" type="submit">Đăng Nhập</button>
+}
+<a href="~/Login/Register" class="forgot-password">
+    Register Account
+</a>
+

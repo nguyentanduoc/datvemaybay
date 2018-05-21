@@ -1,0 +1,157 @@
+﻿@model ModelPlain.EF.GHE
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var ghe = (List<ModelPlain.EF.GHE>)ViewBag.ghe;
+}
+<div class="row pt-2">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title text-center">Thêm Ghế</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            @using (Html.BeginForm("Create", "GheAdmin", FormMethod.Post, new { @role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="card-body">
+                <div class="form-group">
+                   <label>Mã Loại Ghế</label>
+                    
+                        @Html.DropDownList("MA_LOAIGHE", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MA_LOAIGHE, "", new { @class = "text-danger" })
+                    
+                </div>
+                <div class="form-group">
+                    <lable>Máy bay</lable>
+
+                    @Html.DropDownList("MA_MAYBAY", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MA_MAYBAY, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    <lable>Số hiệu</lable>
+                    @Html.TextBoxFor(model => model.SOHIEU_GHE, new { @class = "form-control", @placeholder = "Nhập số hiệu" })
+                    @Html.ValidationMessageFor(model => model.SOHIEU_GHE, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-check">
+                    @Html.CheckBoxFor(model => model.TINHTRANG_GHE, new { @class = "form-check-input", @checked = true })
+                    Tình Trạng Ghế
+                    @Html.ValidationMessageFor(model => model.TINHTRANG_GHE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <input type="submit" value="Thêm" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Danh sách ghế</h3>
+
+                <div class="card-tools">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <table class="table">
+                    <tr>
+                        <th>Số hiệu</th>
+                        <th>Máy Bay</th>
+                        <th>Loại Ghế</th>
+                        <th>Tình Trạng</th>
+                        <th>Tiện ích</th>
+                    </tr>
+                    @foreach (var item in ghe)
+                    {
+                    <tr>
+
+                        <td>@Html.DisplayFor(modelItem => item.SOHIEU_GHE)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MAYBAY.SOHIEU_MAYBAY)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LOAIGHE.TEN_LOAIGHE)
+                        </td>
+                        <th>
+                            @Html.DisplayFor(modelItem => item.TINHTRANG_GHE)
+                        </th>
+                        <td>
+                            <a href="@Url.Action("Edit", "GheAdmin", new {id = item.MA_GHE  })" , class="pr-3">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", "GheAdmin", new { id = item.MA_GHE })">
+                                <i class="fa fa-times" aria-hidden="true" style="color:#d63031"></i>
+                            </a>
+                         
+                        </td>
+                    </tr>
+                    }
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
+
+@*<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SOHIEU_GHE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TINHTRANG_GHE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LOAIGHE.TEN_LOAIGHE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAYBAY.SOHIEU_MAYBAY)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOHIEU_GHE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TINHTRANG_GHE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOAIGHE.TEN_LOAIGHE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MAYBAY.SOHIEU_MAYBAY)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MA_GHE }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MA_GHE }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MA_GHE })
+            </td>
+        </tr>
+    }
+
+</table>*@

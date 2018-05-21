@@ -1,0 +1,204 @@
+﻿@model DatVeMayBay.EntityViews.AddVe
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var listTuyen = (List<ModelPlain.EF.TUYENBAY>)ViewBag.matuyen;
+}
+
+
+<section class="content pt-2">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title text-center">Chọn Tạo Vé</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Sân bay đi</label>
+                            <input id="sanbaydi" class="form-control" readonly />
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label>Chuyến Bay</label>
+                            @if (ViewBag.DanhSachTuyen != null)
+                            {
+                                @Html.DropDownListFor(model => model.MaTuyen, ViewBag.DanhSachTuyen as SelectList, "--Chọn Tuyến--", new { @class = "form-control select2" })
+                            }
+
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Sân Bay Đến</label>
+                            <input id="sanbayden" readonly class="form-control" />
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label>Chuyến Bay</label>
+                            @Html.DropDownListFor(model => model.MaChuyen, new SelectList(" "), "--Chọn Chuyến--", new { @class = "form-control select2" })
+                            @*@Html.DropDownList("MA_TUYENBAY", null, htmlAttributes: new { @class = "form-control select2" })*@
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+                </div>
+                <a id="taove" class="btn btn-primary" href="#" role="button">Tạo Vé</a>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title text-center">Danh sách vé</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Ma Vé</th>
+                            <th>Mã Chuyến Bay</th>
+                            <th>Mã Ghế</th>                                                 
+                        </tr>
+                    </thead>
+                    <tbody id="danhsachve">
+                        
+                     </tbody>                    
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+            the plugin.
+        </div>
+    </div>
+</section>
+
+@section Select2 {
+    <!-- jQuery -->
+    <script src="~/Content/admin/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/Content/admin/plugins/select2/select2.full.min.js"></script>
+    <!-- InputMask -->
+    <script src="~/Content/admin/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="~/Content/admin/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="~/Content/admin/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="~/Content/admin/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="~/Content/admin/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <!-- bootstrap time picker -->
+    <script src="~/Content/admin/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <!-- SlimScroll 1.3.0 -->
+    <script src="~/Content/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="~/Content/admin/plugins/iCheck/icheck.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Content/admin/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/admin/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Content/admin/js/demo.js"></script>
+    <!-- Page script -->
+    <script>
+        $(function () {          
+            $('.select2').select2()
+        })
+        $(document).ready(function () {
+            $("#MaTuyen").change(function () {
+                $.get("/Admin/TaoVeAdmin/LayChuyen", { idTuyen: $("#MaTuyen").val() }, function (data) {
+                    $("#MaChuyen").empty();
+                    $("#MaChuyen").append("<option value='null'>--Chọn Tuyến--</option>");
+                    $.each(data, function (index, row) {
+                        $("#MaChuyen").append("<option value='" + row.MA_CHUYENBAY + "'>" + row.TEN_CHUYENBAY + "</option>")
+                    })
+                });
+                $.ajax({
+                    url: "/Admin/TaoVeAdmin/laySanBay",
+                    data: { idTuyen: $("#MaTuyen").val() },
+                    dataType: "json",
+                    type: "POST",
+                    success: function (res) {
+                        $("#sanbaydi").val(res.noidi);
+                        $("#sanbayden").val(res.noiden);
+                    }
+                });
+            });
+            $("#MaChuyen").change(function (e) {
+                e.preventDefault();
+                var id = $("#MaChuyen").val();               
+                $.ajax({
+                    url: "/Admin/TaoVeAdmin/LayVeTheoChuyenBay",
+                    data: { MaChuyen: id },
+                    dataType: "json",
+                    type: "POST",
+                    success: function (res) {
+                        if (res.result == undefined) {
+                            $("#danhsachve").empty();
+                            $.each(res, function (index, row) {
+                                var view = "<tr><td>" + row.MAVE + "</td><td>" + row.MA_CHUYENBAY + "</td><td>" + row.MA_GHE + "</td></tr>";
+                                $("#danhsachve").append(view);
+                            })
+                        } else {
+                            alert(res.result);
+                        }
+                    }
+                })
+                
+            });
+            $("#taove").click(function (e) {
+                e.preventDefault();
+                var id = $("#MaChuyen").val();
+                $.ajax({
+                    url: "/Admin/TaoVeAdmin/TaoVe",
+                    data: { MaChuyen: id },
+                    dataType: "json",
+                    type: "POST",
+                    success: function (res) {
+                        if (res.result == undefined) {
+                            $("#danhsachve").empty();
+                            console(res);
+                            //$.each(res, function (index, row) {
+                            //    var view = "<tr><td>" + row.MAVE + "</td><td>" + row.MA_CHUYENBAY + "</td><td>"+row.MA_GHE+"</td></tr>";
+                            //    $("#danhsachve").append(view);
+                            //})
+                        } else {
+                            alert(res.result);
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+
+}
+@section css_datepicker{
+    <link rel="stylesheet" href="~/Content/plugins/datapicker/datepicker.css">
+}
+@section js_datepicker{
+    <script src="~/Content/plugins/datapicker/datepicker.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="datepicker"]').datepicker({
+                autoHide: true,
+                zIndex: 2048,
+            });
+        });
+    </script>
+}

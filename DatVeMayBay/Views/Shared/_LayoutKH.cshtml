@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container pt-4">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-3 right-user">
+                <image src="~/Content/images/user-male-icon.png" width="150" />
+                <a class="btn btn-default" href="~/KhachHang/TTKH">Cập Nhật Thông Tin</a>
+                <a class="btn btn-default" href="~/KhachHang/VeDaDat">Lịch Sử Đặt Vé</a>
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+
+        </div>
+
+    </div>
+</div>

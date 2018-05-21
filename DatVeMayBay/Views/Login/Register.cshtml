@@ -1,0 +1,28 @@
+﻿@model DatVeMayBay.EntityViews.RegisterEV
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+
+@using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @class = "form-signin" }))
+{
+    @Html.AntiForgeryToken()
+
+    <span id="reauth-email" class="reauth-email"></span>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.FullName), @autofocus = "autoforcus" })
+    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(model => model.User, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.User), @type = "email" })
+    @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+
+    @Html.PasswordFor(model => model.PassWord,  new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.PassWord) } )
+    @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+    <button class="btn btn-outline-primary" type="submit">Đăng Ký</button>
+}
+    <a href="~/Home" class="forgot-password">
+        Về Trang Chủ
+    </a>

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatVeMayBayDBModelStoreContainer" CdmEntityContainer="DatVeMayBayDBEntities">
+    <EntitySetMapping Name="CHITIETDATVEs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.CHITIETDATVE">
+        <MappingFragment StoreEntitySet="CHITIETDATVE">
+          <ScalarProperty Name="MA_KHACHHANG" ColumnName="MA_KHACHHANG" />
+          <ScalarProperty Name="MAVE" ColumnName="MAVE" />
+          <ScalarProperty Name="NGAYDAT" ColumnName="NGAYDAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHUYENBAYs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.CHUYENBAY">
+        <MappingFragment StoreEntitySet="CHUYENBAY">
+          <ScalarProperty Name="MA_CHUYENBAY" ColumnName="MA_CHUYENBAY" />
+          <ScalarProperty Name="MA_TUYENBAY" ColumnName="MA_TUYENBAY" />
+          <ScalarProperty Name="MA_MAYBAY" ColumnName="MA_MAYBAY" />
+          <ScalarProperty Name="TEN_CHUYENBAY" ColumnName="TEN_CHUYENBAY" />
+          <ScalarProperty Name="NGAYBAY_CHUYENBAY" ColumnName="NGAYBAY_CHUYENBAY" />
+          <ScalarProperty Name="GIOBAY_CHUYENBAY" ColumnName="GIOBAY_CHUYENBAY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GHEs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.GHE">
+        <MappingFragment StoreEntitySet="GHE">
+          <ScalarProperty Name="MA_GHE" ColumnName="MA_GHE" />
+          <ScalarProperty Name="MA_LOAIGHE" ColumnName="MA_LOAIGHE" />
+          <ScalarProperty Name="MA_MAYBAY" ColumnName="MA_MAYBAY" />
+          <ScalarProperty Name="SOHIEU_GHE" ColumnName="SOHIEU_GHE" />
+          <ScalarProperty Name="TINHTRANG_GHE" ColumnName="TINHTRANG_GHE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="MA_KHACHHANG" ColumnName="MA_KHACHHANG" />
+          <ScalarProperty Name="TEN_KHACHHANG" ColumnName="TEN_KHACHHANG" />
+          <ScalarProperty Name="SDT_KHACHHANG" ColumnName="SDT_KHACHHANG" />
+          <ScalarProperty Name="EMAIL_KHACHHANG" ColumnName="EMAIL_KHACHHANG" />
+          <ScalarProperty Name="GIOITINH_KHACHHANG" ColumnName="GIOITINH_KHACHHANG" />
+          <ScalarProperty Name="TINHTRANG_KHACHHANG" ColumnName="TINHTRANG_KHACHHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIGHEs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.LOAIGHE">
+        <MappingFragment StoreEntitySet="LOAIGHE">
+          <ScalarProperty Name="MA_LOAIGHE" ColumnName="MA_LOAIGHE" />
+          <ScalarProperty Name="TEN_LOAIGHE" ColumnName="TEN_LOAIGHE" />
+          <ScalarProperty Name="PHANTRAMGIA_LOAIGHE" ColumnName="PHANTRAMGIA_LOAIGHE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIKHACHes">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.LOAIKHACH">
+        <MappingFragment StoreEntitySet="LOAIKHACH">
+          <ScalarProperty Name="MA_LOAIKHACH" ColumnName="MA_LOAIKHACH" />
+          <ScalarProperty Name="TEN_LOAIKHACH" ColumnName="TEN_LOAIKHACH" />
+          <ScalarProperty Name="PHANTRAMGIA_LOAIKHACH" ColumnName="PHANTRAMGIA_LOAIKHACH" />
+          <ScalarProperty Name="TINHTRANG_LOAIKHACH" ColumnName="TINHTRANG_LOAIKHACH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAYBAYs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.MAYBAY">
+        <MappingFragment StoreEntitySet="MAYBAY">
+          <ScalarProperty Name="MA_MAYBAY" ColumnName="MA_MAYBAY" />
+          <ScalarProperty Name="SOHIEU_MAYBAY" ColumnName="SOHIEU_MAYBAY" />
+          <ScalarProperty Name="TINHTRANG_MAYBAY" ColumnName="TINHTRANG_MAYBAY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUOCGIAs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.QUOCGIA">
+        <MappingFragment StoreEntitySet="QUOCGIA">
+          <ScalarProperty Name="MA_QUOCGIA" ColumnName="MA_QUOCGIA" />
+          <ScalarProperty Name="TEN_QUOCGIA" ColumnName="TEN_QUOCGIA" />
+          <ScalarProperty Name="TINHTRANG_QUOCGIA" ColumnName="TINHTRANG_QUOCGIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANBAYs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.SANBAY">
+        <MappingFragment StoreEntitySet="SANBAY">
+          <ScalarProperty Name="MA_SANBAY" ColumnName="MA_SANBAY" />
+          <ScalarProperty Name="MA_QUOCGIA" ColumnName="MA_QUOCGIA" />
+          <ScalarProperty Name="TEN_SANBAY" ColumnName="TEN_SANBAY" />
+          <ScalarProperty Name="TINHTRANG_SANBAY" ColumnName="TINHTRANG_SANBAY" />
+          <ScalarProperty Name="DIACHI_SANBAY" ColumnName="DIACHI_SANBAY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAIKHOANs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.TAIKHOAN">
+        <MappingFragment StoreEntitySet="TAIKHOAN">
+          <ScalarProperty Name="MA_TAIKHOAN" ColumnName="MA_TAIKHOAN" />
+          <ScalarProperty Name="MA_KHACHHANG" ColumnName="MA_KHACHHANG" />
+          <ScalarProperty Name="EMAIL_TAIKHOAN" ColumnName="EMAIL_TAIKHOAN" />
+          <ScalarProperty Name="MATKHAU_TAIKHOAN" ColumnName="MATKHAU_TAIKHOAN" />
+          <ScalarProperty Name="TINHTRANG_TAIKHOAN" ColumnName="TINHTRANG_TAIKHOAN" />
+          <ScalarProperty Name="ISADMIN" ColumnName="ISADMIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TUYENBAYs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.TUYENBAY">
+        <MappingFragment StoreEntitySet="TUYENBAY">
+          <ScalarProperty Name="MA_TUYENBAY" ColumnName="MA_TUYENBAY" />
+          <ScalarProperty Name="MA_SANBAY_DI" ColumnName="MA_SANBAY_DI" />
+          <ScalarProperty Name="MA_SANBAY_DEN" ColumnName="MA_SANBAY_DEN" />
+          <ScalarProperty Name="TEN_TUYENBAY" ColumnName="TEN_TUYENBAY" />
+          <ScalarProperty Name="GIOITHIEU_TUYENBAY" ColumnName="GIOITHIEU_TUYENBAY" />
+          <ScalarProperty Name="GIA_TUYENBAY" ColumnName="GIA_TUYENBAY" />
+          <ScalarProperty Name="THOIGIANBAY" ColumnName="THOIGIANBAY" />
+          <ScalarProperty Name="HINHANH_TUYENBAY" ColumnName="HINHANH_TUYENBAY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEs">
+      <EntityTypeMapping TypeName="DatVeMayBayDBModel.VE">
+        <MappingFragment StoreEntitySet="VE">
+          <ScalarProperty Name="MAVE" ColumnName="MAVE" />
+          <ScalarProperty Name="MA_CHUYENBAY" ColumnName="MA_CHUYENBAY" />
+          <ScalarProperty Name="MA_GHE" ColumnName="MA_GHE" />
+          <ScalarProperty Name="NGAYTAO_VE" ColumnName="NGAYTAO_VE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="search" FunctionName="DatVeMayBayDBModel.Store.search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatVeMayBayDBModel.Search_Result_final">
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="MA_LOAIGHE" ColumnName="MA_LOAIGHE" />
+          <ScalarProperty Name="TEN_LOAIGHE" ColumnName="TEN_LOAIGHE" />
+          <ScalarProperty Name="NGAYBAY_CHUYENBAY" ColumnName="NGAYBAY_CHUYENBAY" />
+          <ScalarProperty Name="GIOBAY_CHUYENBAY" ColumnName="GIOBAY_CHUYENBAY" />
+          <ScalarProperty Name="GIAVE" ColumnName="GIAVE" />
+          <ScalarProperty Name="HINHANH_TUYENBAY" ColumnName="HINHANH_TUYENBAY" />
+          <ScalarProperty Name="MA_CHUYENBAY" ColumnName="MA_CHUYENBAY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="danhSachVe" FunctionName="DatVeMayBayDBModel.Store.danhSachVe">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatVeMayBayDBModel.danhSachVe_Result">
+          <ScalarProperty Name="MAVE" ColumnName="MAVE" />
+          <ScalarProperty Name="SOHIEU_GHE" ColumnName="SOHIEU_GHE" />
+          <ScalarProperty Name="GIAVE" ColumnName="GIAVE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="danhsachvekhachhang" FunctionName="DatVeMayBayDBModel.Store.danhsachvekhachhang">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatVeMayBayDBModel.danhsachvekhachhang_Result">
+          <ScalarProperty Name="SOHIEU_GHE" ColumnName="SOHIEU_GHE" />
+          <ScalarProperty Name="TEN_LOAIGHE" ColumnName="TEN_LOAIGHE" />
+          <ScalarProperty Name="NGAYBAY_CHUYENBAY" ColumnName="NGAYBAY_CHUYENBAY" />
+          <ScalarProperty Name="GIOBAY_CHUYENBAY" ColumnName="GIOBAY_CHUYENBAY" />
+          <ScalarProperty Name="SBDI" ColumnName="SBDI" />
+          <ScalarProperty Name="SBDEN" ColumnName="SBDEN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="danhsachvekhdat" FunctionName="DatVeMayBayDBModel.Store.danhsachvekhdat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatVeMayBayDBModel.danhsachvekhdat_Result">
+          <ScalarProperty Name="MA_KHACHHANG" ColumnName="MA_KHACHHANG" />
+          <ScalarProperty Name="MAVE" ColumnName="MAVE" />
+          <ScalarProperty Name="NGAYDAT" ColumnName="NGAYDAT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getVe" FunctionName="DatVeMayBayDBModel.Store.getVe">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatVeMayBayDBModel.getVe_Result">
+          <ScalarProperty Name="MAVE" ColumnName="MAVE" />
+          <ScalarProperty Name="MA_CHUYENBAY" ColumnName="MA_CHUYENBAY" />
+          <ScalarProperty Name="MA_GHE" ColumnName="MA_GHE" />
+          <ScalarProperty Name="NGAYTAO_VE" ColumnName="NGAYTAO_VE" />
+          <ScalarProperty Name="MA_CHUYENBAY1" ColumnName="MA_CHUYENBAY1" />
+          <ScalarProperty Name="MA_TUYENBAY" ColumnName="MA_TUYENBAY" />
+          <ScalarProperty Name="MA_MAYBAY" ColumnName="MA_MAYBAY" />
+          <ScalarProperty Name="TEN_CHUYENBAY" ColumnName="TEN_CHUYENBAY" />
+          <ScalarProperty Name="NGAYBAY_CHUYENBAY" ColumnName="NGAYBAY_CHUYENBAY" />
+          <ScalarProperty Name="GIOBAY_CHUYENBAY" ColumnName="GIOBAY_CHUYENBAY" />
+          <ScalarProperty Name="MA_GHE1" ColumnName="MA_GHE1" />
+          <ScalarProperty Name="MA_LOAIGHE" ColumnName="MA_LOAIGHE" />
+          <ScalarProperty Name="MA_MAYBAY1" ColumnName="MA_MAYBAY1" />
+          <ScalarProperty Name="SOHIEU_GHE" ColumnName="SOHIEU_GHE" />
+          <ScalarProperty Name="TINHTRANG_GHE" ColumnName="TINHTRANG_GHE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

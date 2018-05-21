@@ -1,0 +1,40 @@
+﻿@model ModelPlain.EF.MAYBAY
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row pt-2">
+    <div class="col-md-6">
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">Sửa Máy Bay</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                 @Html.HiddenFor(model => model.MA_MAYBAY)
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.SOHIEU_MAYBAY, new { @class = "form-control", @placeholder = "Nhập Số Hiệu" })
+                        @Html.ValidationMessageFor(model => model.SOHIEU_MAYBAY, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-check">
+                        @Html.CheckBoxFor(model => model.TINHTRANG_MAYBAY, new { htmlAttributes = new { @class = "minimal" } })
+                        Tình trạng
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <input type="submit" value="Sửa" class="btn btn-infor" />
+                    @Html.ActionLink("Quay về", "Index")
+                </div>
+            }
+        </div>
+    </div>
+ </div>
+    

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="84f903a2a25545e9a178b3d2984aa3b8" Name="Diagram1">
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.CHITIETDATVE" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.CHUYENBAY" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.GHE" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.KHACHHANG" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.LOAIGHE" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.LOAIKHACH" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.MAYBAY" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.QUOCGIA" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.SANBAY" Width="1.5" PointX="1.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.TAIKHOAN" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.TUYENBAY" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatVeMayBayDBModel.VE" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_CHITIETD_CHITIETDA_KHACHHAN" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_CHITIETD_CHITIETDA_VE" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_CHUYENBA_RELATIONS_MAYBAY" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_CHUYENBA_RELATIONS_TUYENBAY" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_VE_RELATIONS_CHUYENBA" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_GHE_RELATIONS_LOAIGHE" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_GHE_RELATIONS_MAYBAY" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_VE_RELATIONS_GHE" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_TAIKHOAN_RELATIONS_KHACHHAN" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_SANBAY_RELATIONS_QUOCGIA" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_TUYENBAY_DEN_SANBAY" ManuallyRouted="false" />
+        <AssociationConnector Association="DatVeMayBayDBModel.FK_TUYENBAY_DI_SANBAY" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

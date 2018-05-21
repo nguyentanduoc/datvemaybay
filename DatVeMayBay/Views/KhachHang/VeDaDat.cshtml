@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ModelPlain.EF.danhsachvekhachhang_Result>
+@{
+    ViewBag.Title = "VeDaDat";
+    Layout = "~/Views/Shared/_LayoutKH.cshtml";
+}
+
+@if (Model != null)
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nơi đi</th>
+            <th>Nơi đến</th>
+            <th>Giờ Bay</th>
+            <th>Ngày Bay</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>           
+            <td>@item.SBDI</td>
+            <td>@item.SBDEN</td>
+            <td>@item.GIOBAY_CHUYENBAY</td>
+            <td>@item.NGAYBAY_CHUYENBAY.ToShortDateString()</td>
+        </tr>
+    }
+</table>
+
+}

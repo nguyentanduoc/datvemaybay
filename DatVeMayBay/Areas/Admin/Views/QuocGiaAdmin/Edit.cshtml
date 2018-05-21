@@ -1,0 +1,43 @@
+﻿@model ModelPlain.EF.QUOCGIA
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row pt-2">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Thêm Quốc Gia</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            @using (Html.BeginForm("Edit", "QuocGiaAdmin", FormMethod.Post, new { @role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                 @Html.HiddenFor(model => model.MA_QUOCGIA)
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.TEN_QUOCGIA, new { @class = "form-control", @placeholder = "Nhập Quốc Gia" })
+                        @Html.ValidationMessageFor(model => model.TEN_QUOCGIA, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-check">
+                        @Html.EditorFor(model => model.TINHTRANG_QUOCGIA, new { @class = "form-check-input"})
+                        @Html.ValidationMessageFor(model => model.TINHTRANG_QUOCGIA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <input type="submit" value="Lưu" class="btn btn-primary" />                    
+                        @Html.ActionLink("Quay Lại", "Index")                   
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+           

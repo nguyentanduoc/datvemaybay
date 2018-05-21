@@ -1,0 +1,122 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    @*<link rel="icon" href="../../../../favicon.ico">*@
+
+    <title>@ViewBag.Title -Ticket</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/plugins/datapicker/datepicker.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class=" p-2 d-flex flex-column flex-md-row align-items-center px-md-4 bg-white border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">
+            <a href="~/Home" style="text-decoration:none; font-weight:500">
+                Ticket Plain
+            </a>
+        </h5>
+
+        @{
+            var session = (DatVeMayBay.EntityViews.UserSession)Session[DatVeMayBay.Common.Constant.USER_SESSION];
+        }
+        @if (session == null)
+        {
+            <nav class="my-2 my-md-0 mr-md-3  nav navbar ">
+            </nav>
+            <a class="btn btn-primary" href="~/Login/">Đăng nhập</a>
+        }
+        else
+        {
+            if (session.isAdmin == true)
+            { <nav class="my-2 my-md-0 mr-md-3  nav navbar ">
+                </nav>
+                <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @session.TenKH
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="~/Admin/DanhSachKhachDatVe/">Admin</a>
+                        <a class="dropdown-item" href="~/Login/Logout">Thoát</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                if (session.isAdmin == false)
+                {
+                <nav class="my-2 my-md-0 mr-md-3  nav navbar ">
+                    <a class="btn btn-default" href="~/KhachHang/TTKH">Thông Tin cá nhân</a>
+                    <a class="btn btn-default" href="~/KhachHang/VeDaDat">Lịch Sử Đặt Vé</a>
+
+                </nav>
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @session.TenKH
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Thông Tin</a>
+                            <a class="dropdown-item" href="~/Login/Logout">Thoát</a>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+    @RenderBody()
+    <div class="container">
+        <footer class="pt-4 my-md-5 pt-md-5 border-top"></footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="~/Content/js/jquery-3.3.1.slim.min.js"></script>
+    <script>
+        $("#tim").click(function () {
+            var sanbaydi = $('#MA_SAN_BAY_DI').val();
+            var sanbayden = $('#MA_SAN_BAY_DEN').val();
+            var ngaydi = $('#NGAY_DI').val();
+            $.ajax({
+                data: { sanbaydi: sanbaydi, sanbayden: sanbayden, ngaydi: ngaydi },
+                url: '/Home/Search',
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+        });
+    </script>
+    <script src="~/Content/js/popper.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/holder.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="~/Content/plugins/datapicker/datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.diadiem').select2();
+        });
+        $(function () {
+            $('[data-toggle="datepicker"]').datepicker({
+                autoHide: true,
+                zIndex: 2048,
+            });
+        });
+    </script>
+
+
+    @RenderSection("search", false)
+</body>
+</html>

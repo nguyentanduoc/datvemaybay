@@ -1,0 +1,93 @@
+﻿@model ModelPlain.EF.LOAIGHE
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content pt-2">
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Thêm Loại Ghế</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    @using (Html.BeginForm("Create","LoaiGheAdmin",FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="card-body">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <label>Tên Loại Ghế</label>
+                            @Html.EditorFor(model => model.TEN_LOAIGHE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TEN_LOAIGHE, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>Phần tram giá</label>
+                            @Html.EditorFor(model => model.PHANTRAMGIA_LOAIGHE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PHANTRAMGIA_LOAIGHE, "", new { @class = "text-danger" })
+                        </div>                        
+                        <div class="form-check">
+                            @Html.CheckBoxFor(model => model.TINHTRANG_LOAIGHE)
+                            @Html.ValidationMessageFor(model => model.TINHTRANG_LOAIGHE, "", new { @class = "text-danger" })
+                            <label class="form-check-label">Tình trạng</label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Thêm</button>
+                        @Html.ActionLink("Trở về", "Index")
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Danh Sách Loại Ghế</h3>
+
+                        <div class="card-tools">
+                            <ul class="pagination pagination-sm m-0 float-right">
+                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <table class="table">
+                            <tr>
+                                <th>Tên Quốc Gia</th>
+                                <th>Tình trạng</th>
+                                <th>Mở Rộng</th>
+                            </tr>
+                            @foreach (var item in quocgia)
+                {
+                    <tr>
+
+                        <td>@Html.DisplayFor(modelItem => item.TEN_QUOCGIA)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TINHTRANG_QUOCGIA)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.MA_QUOCGIA }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MA_QUOCGIA })
+                        </td>
+                    </tr>
+    }
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

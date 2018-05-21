@@ -1,0 +1,127 @@
+﻿@model ModelPlain.EF.CHUYENBAY
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content pt-2">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Tạo Chuyến Bay</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Tên Chuyến</label>
+                                @Html.EditorFor(model => model.TEN_CHUYENBAY, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TEN_CHUYENBAY, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Mã Máy Bay</label>
+                                @Html.DropDownList("MA_MAYBAY", null, htmlAttributes: new { @class = "form-control select2" })
+                                @Html.ValidationMessageFor(model => model.MA_MAYBAY, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Tuyến Bay</label>
+                                @Html.DropDownList("MA_TUYENBAY", null, htmlAttributes: new { @class = "form-control select2" })
+                                @Html.ValidationMessageFor(model => model.MA_TUYENBAY, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Ngày Bay:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                    @Html.TextBoxFor(model => model.NGAYBAY_CHUYENBAY, new { @class = "form-control", @data_toggle = "datepicker" })
+                                    @Html.ValidationMessageFor(model => model.NGAYBAY_CHUYENBAY, "", new { @class = "text-danger" })
+
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="bootstrap-timepicker">
+                                <div class="form-group">
+                                    <label>Giờ Khởi Hành</label>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.GIOBAY_CHUYENBAY, new { @class = "form-control", @type = "time" })
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.GIOBAY_CHUYENBAY, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Tạo</button>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Select2 {
+    <!-- jQuery -->
+    <script src="~/Content/admin/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/Content/admin/plugins/select2/select2.full.min.js"></script>
+    <!-- InputMask -->
+    <script src="~/Content/admin/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="~/Content/admin/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="~/Content/admin/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="~/Content/admin/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="~/Content/admin/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <!-- bootstrap time picker -->
+    <script src="~/Content/admin/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <!-- SlimScroll 1.3.0 -->
+    <script src="~/Content/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="~/Content/admin/plugins/iCheck/icheck.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Content/admin/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/admin/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Content/admin/js/demo.js"></script>
+    <!-- Page script -->
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+        })
+    </script>
+
+}
+@section css_datepicker{
+    <link rel="stylesheet" href="~/Content/plugins/datapicker/datepicker.css">
+}
+@section js_datepicker{
+    <script src="~/Content/plugins/datapicker/datepicker.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="datepicker"]').datepicker({
+                autoHide: true,
+                zIndex: 2048,
+            });
+        });
+    </script>
+}

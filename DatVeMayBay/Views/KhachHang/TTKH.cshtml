@@ -1,0 +1,29 @@
+﻿@model ModelPlain.EF.KHACHHANG
+
+@{
+    ViewBag.Title = "TTKH";
+    Layout = "~/Views/Shared/_LayoutKH.cshtml";
+}
+
+
+    <h4>KHACHHANG</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 offset-2">
+            <label>Tên Khách Hàng:</label>
+            <label>Số điện thoại</label>
+            <label>Email Khách Hàng</label>
+            <label>Giới tính</label>
+            <label>Tình trạng</label>
+        </div>
+        <div class="col-md-4">
+            <div> @Html.DisplayFor(model => model.TEN_KHACHHANG)</div>
+            <div> @Html.DisplayFor(model => model.SDT_KHACHHANG)</div>
+            <div> @Html.DisplayFor(model => model.EMAIL_KHACHHANG)</div>
+            <div>
+                @Html.RadioButtonFor(model => model.GIOITINH_KHACHHANG, true) Nam
+                @Html.RadioButtonFor(model => model.GIOITINH_KHACHHANG, false) Nữ
+            </div>
+            <div>@Html.CheckBoxFor(model => model.TINHTRANG_KHACHHANG)</div>
+        </div>
+    </div>

@@ -1,0 +1,41 @@
+﻿@model ModelPlain.EF.LOAIKHACH
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content pt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Xoá Loại Khách</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Tên Loại Khách:</label>
+                        @Html.DisplayFor(model => model.TEN_LOAIKHACH)
+                    </div>
+                    <div class="form-group">
+                        <label>Phần Trăm:</label>
+                        @Html.DisplayFor(model => model.PHANTRAMGIA_LOAIKHACH)
+                    </div>
+                    <div class="form-group">
+                        <label>Tình Trạng</label>
+                        @Html.DisplayFor(model => model.TINHTRANG_LOAIKHACH)
+                    </div>
+                </div>
+                <div class="card-footer">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Xoá" class="btn btn-danger" /> |
+                            @Html.ActionLink("Về danh sách", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

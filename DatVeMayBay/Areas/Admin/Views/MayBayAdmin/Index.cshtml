@@ -1,0 +1,84 @@
+﻿@model ModelPlain.EF.MAYBAY
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var dsmaybay = (List<ModelPlain.EF.MAYBAY>)ViewBag.maybay;
+}
+<div class="row pt-2">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Thêm Máy Bay</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            @using (Html.BeginForm("Create", "MayBayAdmin", FormMethod.Post, new { @role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.SOHIEU_MAYBAY, new { @class = "form-control", @placeholder = "Nhập Số Hiệu" })
+                        @Html.ValidationMessageFor(model => model.SOHIEU_MAYBAY, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-check">
+                        @Html.CheckBoxFor(model => model.TINHTRANG_MAYBAY, htmlAttributes: new { @class = "minimal", @checked = true })
+                        Tình trạng
+                        @Html.ValidationMessageFor(model => model.SOHIEU_MAYBAY, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <input type="submit" value="Thêm" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Danh Sách Máy Bay</h3>
+
+                <div class="card-tools">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <table class="table">
+                    <tr>
+                        <th>Tên Quốc Gia</th>
+                        <th>Tình trạng</th>
+                        <th>Mở Rộng</th>
+                    </tr>
+                    @foreach (var item in dsmaybay)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.SOHIEU_MAYBAY)</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TINHTRANG_MAYBAY)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "MayBayAdmin", new {  id = item.MA_MAYBAY })" , class="pr-3">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                                <a href="@Url.Action("Delete", "MayBayAdmin", new {  id = item.MA_MAYBAY   })">
+                                    <i class="fa fa-times" aria-hidden="true" style="color:#d63031"></i>
+                                </a>
+                              
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>

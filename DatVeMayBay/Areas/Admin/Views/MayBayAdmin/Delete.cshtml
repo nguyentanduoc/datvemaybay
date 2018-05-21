@@ -1,0 +1,42 @@
+﻿@model ModelPlain.EF.MAYBAY
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row pt-2">
+    <div class="col-md-6">
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Xoá Máy Bay</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->           
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Số hiệu máy bay:</label>
+                            @Html.DisplayFor(model => model.SOHIEU_MAYBAY)
+                        </div>
+                        <div class="col-md-6">
+                            @Html.CheckBoxFor(model => model.TINHTRANG_MAYBAY, new { htmlAttributes = new { @class = "minimal" } })
+                            Tình trạng
+                            @Html.ValidationMessageFor(model => model.SOHIEU_MAYBAY, "", new { @class = "text-danger" })
+                        </div>
+                    </div>      
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    @using (Html.BeginForm())
+    {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Xoá" class="btn btn-danger" /> |
+                    @Html.ActionLink("Quay Lại", "Index")
+                </div>
+}
+                </div>
+        </div>
+    </div>
+</div>

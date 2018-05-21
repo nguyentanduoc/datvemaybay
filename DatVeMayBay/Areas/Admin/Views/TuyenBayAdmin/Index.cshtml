@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ModelPlain.EF.TUYENBAY>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content pt-2">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Danh Sách Chuyến Bay</h3>
+                    <div class="card-tools">
+                        <a href="@Url.Action("Create", "TuyenBayAdmin")" class=" btn btn-success">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        </a>
+                      
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>                                
+                                <th>Tên chuyến Bay</th>
+                                <th>Hình tuyến</th>
+                                <th>Giá</th>
+                                <th>Thời Gian</th>
+                                <th>Tên Sân Bay Đi</th>
+                                <th>Tên Sân Bay Đến</th>
+                                <th>Tiện Ích</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TEN_TUYENBAY)
+                                    </td>
+                                    <td>
+                                        <img src="~/Content/@Html.DisplayFor(modelItem => item.HINHANH_TUYENBAY)"  alt="" height="100px" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GIA_TUYENBAY)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.THOIGIANBAY)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SANBAY.TEN_SANBAY)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SANBAY1.TEN_SANBAY)
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "TuyenBayAdmin", new { id = item.MA_TUYENBAY})" , class="pr-3">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="@Url.Action("Delete", "TuyenBayAdmin", new {id = item.MA_TUYENBAY })">
+                                            <i class="fa fa-times" aria-hidden="true" style="color:#d63031"></i>
+                                        </a>                                      
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+</section>
+@section DataTables{
+    <!-- DataTables -->
+    <script src="~/Content/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/admin/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="~/Content/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Content/admin/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/admin/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Content/admin/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+}

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ModelPlain.EF.Search_Result_final>
+@{
+/**/
+
+ViewBag.Title = "Search";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    @if (Model != null)
+    {
+        if (Model.Count() > 0)
+        {
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Loại Ghế</th>
+                <th>Ngày Đi</th>
+                <th>Giờ Khởi hành</th>
+                <th style="float:right">Giá Vé</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="~/Content/@Html.DisplayFor(model => item.HINHANH_TUYENBAY)" height="100" /></td>
+                <td>@Html.DisplayFor(model => item.TEN_LOAIGHE)</td>
+                <td>@item.NGAYBAY_CHUYENBAY.ToShortDateString()</td>
+                <td>@Html.DisplayFor(model => item.GIOBAY_CHUYENBAY)</td>
+                <td>
+                    <div style="color:#FF0000; float:right; font-size:20px">@Html.DisplayFor(model => item.GIAVE) VNĐ</div>
+                    <br />
+                    <a class="btn btn-light pt-1" style="float:right" href="~/Home/DanhSachVE/?MaLG=@item.MA_LOAIGHE&MCB=@item.MA_CHUYENBAY">Chọn Ghế</a>
+                </td>
+
+            </tr>
+        }
+        </tbody>
+    </table>
+        }
+        else
+        {
+            <div class="text-center pt-3"><h3 style="color:#d63031">Không có chuyến nào trong khung ngày này</h3></div>
+            <div style="float:right"> <a href="~/Home"> Về trang chủ</a></div>
+        }
+
+
+    }  
+</div>

@@ -1,0 +1,70 @@
+﻿@model ModelPlain.EF.TUYENBAY
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content pt-3">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Xoá chuyến bay</h3>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Giới thiệu:</label>
+                            @Html.DisplayFor(model => model.GIOITHIEU_TUYENBAY)
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Giá:</label>
+                            @Html.DisplayFor(model => model.GIA_TUYENBAY)
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Thời Gian Bay:</label>
+                            @Html.DisplayFor(model => model.THOIGIANBAY)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Tên Tuyến Bay:</label>
+                            @Html.DisplayFor(model => model.TEN_TUYENBAY)
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Sân Bay Đi:</label>
+                            @Html.DisplayFor(model => model.SANBAY1.TEN_SANBAY)
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Sân Bay Đến:</label>
+                            @Html.DisplayFor(model => model.SANBAY.TEN_SANBAY)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Xoá" class="btn btn-danger" /> |
+                        @Html.ActionLink("Về danh sách", "Index")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
